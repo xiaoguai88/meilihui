@@ -23,7 +23,13 @@ Vue.use(VueRouter)
     {
       path:'/mine',
       component:mine
-    }
+    },
+    {
+      path:"/detail/:id",
+      name:"Detail",
+      props: true,
+      component:()=>import(/* webpackChunkName: "detail" */"../views/Detail.vue")
+    },
 ]
 
 const router = new VueRouter({

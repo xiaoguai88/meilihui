@@ -13,3 +13,22 @@ Vue.directive("swiper",{
         }
     }
 })
+
+
+Vue.directive('title', {
+    // 插入到dom之后的钩子函数
+    inserted (el, binding) {
+      el.style.display = 'none'
+      window.onscroll = () => {
+        if ((document.body.scrollTop || document.documentElement.scrollTop) >= binding.value) {
+          el.style.display = 'block'
+        } else {
+          el.style.display = 'none'
+        }
+      }
+    },
+    // 指令的解绑的钩子函数
+    unbind () {
+      window.onscroll = null
+    }
+  })

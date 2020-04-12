@@ -5,10 +5,10 @@ import store from './store'
 
 import "@/stylesheets/main.scss"
 
-import "./utils/rem"
+import "@/utils/rem"
 
 import "@/utils/directives"
-
+import "@/utils/filter"
 import Vant from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Vant);
