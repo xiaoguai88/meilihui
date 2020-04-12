@@ -75,7 +75,7 @@
                                     v-for="(data,index) in infoList.colorGroup"
                                     :key="index"
                                     :class="activeClass == index?'active':''"
-                                    @click="isActive(index)"
+                                    @click="isActive(index,data)"
                                 >{{data.color}}</span>
                             </span>
                         </div>
@@ -87,8 +87,8 @@
                                 <span class="normal" 
                                     v-for="(data,index) in infoList.size"
                                     :key="data.sizeId"
-                                     :class="activeClass == index?'active':''"
-                                    @click="isActive(index)"
+                                     :class="activeClass2 == index?'active':''"
+                                    @click="isActive2(index,data)"
                                 >{{data.sizeLabel}}</span>
                             </span>
                         </div>
@@ -287,11 +287,12 @@ export default {
             comments:[],
             viewList:[],
             isShow:false,
-            categoryId:'2121005100000003880',
-            productId:'2041204199000410193',
-            activeClass:1,//1为默认选择第二个
+            activeClass:0,//1为默认选择第一个
+            activeClass2:1,//1为默认选择第二个
             countDownList: '00天00时00分00秒',
-            actEndTime: '2020-05-16 00:00:00'
+            actEndTime: '2020-05-16 00:00:00',
+            color:'',
+            size:''
         }
     },
     components:{
@@ -318,8 +319,16 @@ export default {
         handleBack(){
             this.$router.back()
         },
-      isActive(index){
+     isActive(index,data){
+          this.color=data
+          console.log(this.color)
           this.activeClass = index;
+      },
+      isActive2(index,data){
+        //   console.log(data)
+        this.size=data
+        console.log(this.size)
+          this.activeClass2 = index;
       },
       　timeFormat(param) {
 　　　　　　return param < 10 ? '0' + param : param;
